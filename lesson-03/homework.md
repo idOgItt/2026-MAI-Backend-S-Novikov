@@ -15,4 +15,12 @@
 * Курс не подразумевает вёрстку, но какое-то отображение мы хотим получить. Давайте назовём этот location /web/;
 * В современных веб-приложениях реализован SPA (single page application), вёрстка отделена от логики, и требуются данные только. Такой location мы назовём /api/.
 ## Обрабатывать только нужные методы (GET/POST) — 2 балла.
+Можно сделать при помощи декоратора:
+```Python3
+from django.views.decorators.http import require_http_methods
 
+
+@require_http_methods(["GET"])
+def only_get_view(request):
+    pass
+```
