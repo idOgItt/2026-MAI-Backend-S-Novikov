@@ -11,3 +11,7 @@ local_settings.py
 .idea/
 *.iml
 .vscode/
+
+# Local nginx config for lesson 2 (not needed in repo history)
+lesson-02/nginx/nginx.conf
+/lesson-02/nginx.pid
