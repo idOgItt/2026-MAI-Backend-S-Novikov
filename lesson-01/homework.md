@@ -6,7 +6,7 @@
 * YYYY — текущий год
 * N — первая буква имени
 * LAST\_NAME — фамилия
-**Пример**: 2025-MAI-Backend-A-Kukhtichev
+**Пример**: 2026-MAI-Backend-A-Kukhtichev
 
 ## Создать виртуальное окружение для Python и установить Django==X, где X >= 5 (1 балл)
 ## Описать зависимости в requirements.txt (1 балл)
