@@ -1,0 +1,42 @@
+# Проксирование /web/ и /api/ на Django (gunicorn).
+# Подставь путь к логам/pid и адрес upstream (обычно 127.0.0.1:8000).
+
+user nobody;
+
+error_log <PROJECT_ROOT>/lesson-03/logs/error.log info;
+pid <PROJECT_ROOT>/lesson-03/nginx.pid;
+
+worker_processes 2;
+
+events {
+    worker_connections 64;
+}
+
+http {
+    access_log <PROJECT_ROOT>/lesson-03/logs/access.log;
+
+    upstream django_backend {
+        server 127.0.0.1:8000;
+    }
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location /web/ {
+            proxy_pass http://django_backend;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        location /api/ {
+            proxy_pass http://django_backend;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}

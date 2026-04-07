@@ -1,5 +1,16 @@
 from django.contrib import admin
-from movies.models import Genre, Movie
+from movies.models import Genre, Movie, Profile, Tag
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "display_name")
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    search_fields = ("name",)
+
 
 class MovieAdmin(admin.ModelAdmin):
     list_display = ('title', 'genre', 'year',)

@@ -21,6 +21,8 @@ from project.views import main_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('movies.api_urls')),
+    path('web/', include('movies.web_urls')),
     path('', main_view),
     path('movies/', include('movies.urls')),
 ]
