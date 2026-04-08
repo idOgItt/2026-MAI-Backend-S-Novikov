@@ -1,5 +1,4 @@
 # Проксирование /web/ и /api/ на Django (gunicorn).
-# Подставь путь к логам/pid и адрес upstream (обычно 127.0.0.1:8000).
 
 user nobody;
 
